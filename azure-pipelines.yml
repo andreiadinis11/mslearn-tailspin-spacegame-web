@@ -12,10 +12,10 @@ pool:
   - npm #gerenciador de pacotes para Node.js - javaScript. é instalado no pc kd instalo Node.js.
 
 
-variables:
-  buildConfiguration: 'Release'
-  wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot'
-  dotnetSdkVersion: '5.x'
+variables: #para ref a estas variaveis faço $()
+  buildConfiguration: 'Release' #espcifica a conf do build
+  wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot' #esp o caminho para o diretorio
+  dotnetSdkVersion: '5.x' #esp a versão do .NET SDK a ser usada
 
 steps: #posso ver as build tasks que estao mapeadas para cada comando de script
 - task: UseDotNet@2
@@ -28,7 +28,7 @@ steps: #posso ver as build tasks que estao mapeadas para cada comando de script
   inputs:
     verbose: false
 
--- script: './node_modules/.bin/node-sass $(wwwrootDir) --output $(wwwrootDir)'
+-- script: './node_modules/.bin/node-sass $(wwwrootDir) --output $(wwwrootDir)' #executa o node-Sass para converter arquivos Sass em CSS. Para obter o caminho para o diretório wwwroot , ele faz referência à wwwrootDirvariável.
    displayName: 'Compile Sass assets'
 
 - task: gulp@1
